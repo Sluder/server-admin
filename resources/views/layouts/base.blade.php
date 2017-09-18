@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel Template</title>
+        <title>Admin Panel</title>
 
         {{-- Styles --}}
         <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -14,7 +14,25 @@
     </head>
 
     <body>
-        @yield('content')
+        <div class="container-fluid no-padding">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="navbar navbar-fixed-left">
+                        <div class="header">
+                            <p><i class="fa fa-cogs" aria-hidden="true"></i> Admin Panel</p>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="{{ route('server') }}"><i class="fa fa-bars" aria-hidden="true"></i> Hosting Server</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
 
         {{-- Scripts --}}
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
