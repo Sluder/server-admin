@@ -14,28 +14,41 @@
     </head>
 
     <body>
-        <div class="container-fluid no-padding">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="navbar navbar-fixed-left">
+                    <div class="sidebar">
                         <div class="header">
-                            <p><i class="fa fa-cogs" aria-hidden="true"></i> <a href="{{ route('home') }}">Admin Panel</a></p>
+                            <p>
+                                <i class="fa fa-cogs" aria-hidden="true"></i>
+                                <a href="{{ route('home') }}">Admin Panel</a>
+                            </p>
                         </div>
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="{{ route('server') }}"><i class="fa fa-bars" aria-hidden="true"></i> Hosting Server</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('server') }}"><i class="fa fa-desktop" aria-hidden="true"></i> Websites</a>
-                                <ul class="website-list">
-                                    @forelse (\App\Website::all() as $website)
-                                        <a href="" class="website"><li>Music</li></a>
-                                    @empty
-                                        <div class="website empty"><li>No websites to show</li></div>
-                                    @endforelse
-                                </ul>
-                            </li>
-                        </ul>
+                        <div class="navigation">
+                            <a href="{{ route('server') }}">
+                                <div class="row link">
+                                    <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Hosting Server
+                                </div>
+                            </a>
+                            <a href="{{ route('server') }}">
+                                <div class="row link">
+                                    <i class="fa fa-desktop" aria-hidden="true"></i> Websites
+                                </div>
+                            </a>
+                            <div class="website-list">
+                                @forelse (\App\Website::all() as $website)
+                                    <a href="{{ route('website', ['website' => $website->id]) }}">
+                                        <div class="row website">
+                                            {{ $website->name }}
+                                        </div>
+                                    </a>
+                                @empty
+                                    <div class="row empty">
+                                        No websites to show
+                                    </div>
+                                @endforelse
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-10">

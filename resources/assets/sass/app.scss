@@ -42,59 +42,53 @@ a {
   }
 }
 
-.navbar-fixed-left {
-  position: fixed;
+.sidebar {
   border-radius: 0;
-  height: 100%;
-  background-color: $dark;
-  width: inherit;
   border: none;
+  background-color: $dark;
+  height: 100%;
+  position: fixed;
+  width: inherit;
+  margin-left: -15px;
 
-  .nav {
+  .navigation {
     width: 100%;
 
-    li {
-      width: 100%;
+    a {
+      color: $text-light;
+      font-size: 14px;
 
-      a {
-        color: $text-light;
-        font-size: 14px;
+      .link {
+        height: 40px;
+        line-height: 40px;
+        padding-left: 30px;
 
         &:hover {
+          color: $accent;
           background-color: $light;
         }
+      }
 
-        i {
-          padding-right: 5px;
-        }
+      i {
+        padding-right: 5px;
       }
     }
   }
 
   .website-list {
-    list-style: none;
-
-    .website {
-      color: $text-light;
-      text-decoration: none;
-      font-size: 14px;
-
+    a {
       &:hover {
-        background: none;
-        color: white;
+        color: $accent;
       }
 
-      li {
-        height: 30px;
-        padding-left: 20px;
+      .website {
+        margin-left: 55px;
       }
     }
 
     .empty {
-      &:hover {
-        background: none;
-        color: $text-light;
-      }
+      color: $text-light;
+      margin-left: 55px;
     }
   }
 }

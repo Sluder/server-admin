@@ -1,4 +1,5 @@
 <?php
 
-Route::get('/', 'PageController@home')->name('home');
+Route::get('/', 'PageController@server')->name('home');
 Route::get('/server', 'PageController@server')->name('server');
+Route::get('/website/{website}', 'PageController@website')->name('website');
