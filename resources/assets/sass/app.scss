@@ -10,7 +10,7 @@
 
 // ---------- Global ----------
 html, body {
-  background-color: $light;
+  background-color: $medium;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -28,7 +28,7 @@ a {
 }
 
 
-// ---------- Styles ----------
+// ---------- Layout ----------
 .header {
   color: white;
   text-align: center;
@@ -55,7 +55,7 @@ a {
     width: 100%;
 
     a {
-      color: $text-light;
+      color: $lightest;
       font-size: 14px;
 
       .link {
@@ -65,7 +65,7 @@ a {
 
         &:hover {
           color: $accent;
-          background-color: $light;
+          background-color: $medium;
         }
       }
 
@@ -87,8 +87,79 @@ a {
     }
 
     .empty {
-      color: $text-light;
+      color: $lightest;
       margin-left: 55px;
+    }
+  }
+}
+
+.sub-header {
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 500;
+  color: white;
+  border-bottom: 2px solid $accent;
+  display: inline-block;
+  padding: 0 15px 5px;
+}
+
+.custom-btn {
+  font-size: 11px;
+  color: white;
+  background-color: $accent;
+
+  &:hover {
+    color: $lightest;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// ---------- Content ----------
+.content {
+  padding: 20px;
+}
+
+.server {
+  .details {
+    padding-bottom: 20px;
+
+    .info-table {
+      margin-top: -5px;
+
+      td {
+        padding: 3px;
+        font-size: 12px;
+      }
+
+      .info {
+        color: white;
+      }
+
+      .info-data {
+        color: $lightest;
+      }
+
+      .reboot-btn {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .charts {
+    border-top: 1px solid $light;
+    padding-top: 20px;
+
+    canvas {
+      width: 100% !important;
+      height: 150px !important;
+    }
+
+    .ram-data {
+      margin-top: 20px;
     }
   }
 }
