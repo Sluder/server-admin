@@ -27,6 +27,10 @@ a {
   }
 }
 
+.error {
+  color: red;
+}
+
 
 // ---------- Layout ----------
 .header {
@@ -53,6 +57,7 @@ a {
 
   .navigation {
     width: 100%;
+    margin-top: 15px;
 
     a {
       color: $lightest;
@@ -109,7 +114,7 @@ a {
   background-color: $accent;
 
   &:hover {
-    color: $lightest;
+    color: $medium;
   }
 
   &:focus {
@@ -118,35 +123,36 @@ a {
   }
 }
 
+
 // ---------- Content ----------
 .content {
   padding: 20px;
 }
 
+.info-table {
+  margin-top: -5px;
+
+  td {
+    padding: 3px;
+    font-size: 12px;
+  }
+
+  .info {
+    color: white;
+  }
+
+  .info-data {
+    color: $lightest;
+  }
+
+  .btn {
+    margin-left: 10px;
+  }
+}
+
 .server {
   .details {
     padding-bottom: 20px;
-
-    .info-table {
-      margin-top: -5px;
-
-      td {
-        padding: 3px;
-        font-size: 12px;
-      }
-
-      .info {
-        color: white;
-      }
-
-      .info-data {
-        color: $lightest;
-      }
-
-      .reboot-btn {
-        margin-left: 10px;
-      }
-    }
   }
 
   .charts {
@@ -160,6 +166,44 @@ a {
 
     .ram-data {
       margin-top: 20px;
+    }
+  }
+}
+
+.website {
+  .details {
+    padding-bottom: 20px;
+  }
+
+  .deployment {
+    border-top: 1px solid $light;
+    padding-top: 20px;
+  }
+}
+
+
+// ---------- Modals ----------
+.modal {
+  .modal-content {
+    color: white;
+    background-color: $medium;
+    padding: 15px;
+
+    label {
+      color: $lightest;
+      font-weight: normal;
+    }
+
+    input {
+      color: white;
+      background-color: $light;
+      border: 0;
+      box-shadow: none;
+    }
+
+    button {
+      margin-top: 25px;
+      height: 33px;
     }
   }
 }

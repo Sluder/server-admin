@@ -28,7 +28,7 @@
                 <div class="col-md-4">
                     <table class="info-table">
                         <tr>
-                            <td class="info">NGINX: </td>
+                            <td class="info">NGINX : </td>
                             <td class="info-data">{{ explode('/', $info['software']['webserver'])[1] }}</td>
                         </tr>
                         <tr>
@@ -44,11 +44,7 @@
                             <td class="info-data">
                                 {{ date('M j, Y', strtotime($info['uptime']['booted_at'])) }}
 
-                                {{-- Use form to prevent direct URL --}}
-                                <form action="{{ route('server.reboot') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <button class="btn custom-btn reboot-btn">Reboot</button>
-                                </form>
+                                <button class="btn custom-btn reboot-btn" data-toggle="modal" data-target="#reboot-modal">Reboot</button>
                             </td>
                         </tr>
                     </table>
@@ -68,7 +64,11 @@
             </div>
         </div>
     </div>
-    <?php $cores = (int) shell_exec("cat /proc/cpuinfo | grep processor | wc -l"); ?>
+    @include('components.reboot-modal')
+
+    @php
+        $cores = (int) shell_exec("cat /proc/cpuinfo | grep processor | wc -l");
+    @endphp
 @endsection
 
 @section('scripts')
@@ -153,7 +153,7 @@
                     cpuChart.data.datasets[0].data.push(stats['cpuUsage']);
                     ramChart.data.datasets[0].data.shift();
                     ramChart.data.datasets[0].data.push(stats['ramUsage']);
-console.log(stats['ramUsage']);
+
                     ramChart.update();
                     cpuChart.update();
                 }

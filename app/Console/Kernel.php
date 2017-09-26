@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\WebsiteDeploy;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 

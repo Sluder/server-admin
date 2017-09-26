@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
+
 class ServerController extends Controller
 {
     // Ajax : Returns server usage stats
@@ -9,16 +11,26 @@ class ServerController extends Controller
     {
         $memory = explode(" ", preg_replace('!\s+!', " ", exec("free -m | grep Mem")));
 
-        $stats['cpuUsage'] = (sys_getloadavg()[0] * 100) / (int)shell_exec("cat /proc/cpuinfo | grep processor | wc -l");
-        $stats['ramUsage'] = ($memory[2] / $memory[1]) * 100;
+        $stats['cpuUsage'] = min((sys_getloadavg()[0] * 100) / (int)shell_exec("cat /proc/cpuinfo | grep processor | wc -l"), 100);
+        $stats['ramUsage'] = min(($memory[2] / $memory[1]) * 100, 100);
 
         return $stats;
+    }
+
+    public function deploy()
+    {
+        broadcast("test");
     }
 
     // Reboots hosting server
     public function reboot()
     {
-        exec('sudo -u root -S /sbin/reboot ' . env('SERVER_PASSWORD'));
+        if (Hash::check(request('password'), env('SERVER_PASSWORD'))) {
+            // TODO: Return back with error
+            return redirect()->back();
+        }
+
+        exec('sudo -u root -S /sbin/reboot ' . request('password'));
     }
 
 }
