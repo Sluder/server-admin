@@ -1,4 +1,5 @@
-## Laravel v5.5 Template
+## Laravel v5.5 Hosting Server Admin Panel
 
-- Fixes a lot of Laravel new project issues
-- Includes base controllers and assets
+- Pulls stats and information from server
+- Finds all hosted sites and pulls information about them
+- Automatically runs deployment commands

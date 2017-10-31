@@ -8,46 +8,42 @@
                     <h4 class="sub-header">System</h4>
                 </div>
             </div>
-            <div class="row">
+            <div class="row info">
                 <div class="col-md-4">
-                    <table class="info-table">
-                        <tr>
-                            <td class="info">OS : </td>
-                            <td class="info-data">{{ $info['software']['distro'] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="info">CPU : </td>
-                            <td class="info-data">{{ $info['hardware']['cpu'] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="info">Disk : </td>
-                            <td class="info-data">{{ ($info['hardware']['disk_total'] - $info['hardware']['disk_free']) . "GB / " . $info['hardware']['disk_total'] . "GB" }} used</td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>OS : &nbsp;<span class="grey">{{ $info['software']['distro'] }}</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>CPU :  &nbsp;<span class="grey">{{ $info['hardware']['cpu'] }}</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Disk : &nbsp;<span class="grey">{{ ($info['hardware']['disk_total'] - $info['hardware']['disk_free']) . "GB / " . $info['hardware']['disk_total'] . "GB" }} used</span></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <table class="info-table">
-                        <tr>
-                            <td class="info">NGINX : </td>
-                            <td class="info-data">{{ explode('/', $info['software']['webserver'])[1] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="info">PHP : </td>
-                            <td class="info-data">{{ explode('-', $info['software']['php'])[0] }}</td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>NGINX : &nbsp;<span class="grey">{{ explode('/', $info['software']['webserver'])[1] }}</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>PHP : &nbsp;<span class="grey">{{ explode('-', $info['software']['php'])[0] }}</span></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <table class="info-table">
-                        <tr>
-                            <td class="info">Last Reboot : </td>
-                            <td class="info-data">
-                                {{ date('M j, Y', strtotime($info['uptime']['booted_at'])) }}
-
-                                <button class="btn custom-btn reboot-btn" data-toggle="modal" data-target="#reboot-modal">Reboot</button>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Last Reboot : &nbsp;<span class="grey">{{ date('M j, Y', strtotime($info['uptime']['booted_at'])) }}</span> <button class="btn custom-btn reboot-btn" data-toggle="modal" data-target="#reboot-modal">Reboot</button></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

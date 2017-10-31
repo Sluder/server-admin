@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
+use Pusher\Pusher;
 
 class ServerController extends Controller
 {
@@ -17,20 +18,31 @@ class ServerController extends Controller
         return $stats;
     }
 
+    // Deploys website
     public function deploy()
     {
-        broadcast("test");
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            [
+                'cluster' =>  env('PUSHER_CLUSTER'),
+                'encrypted' => true
+            ]
+        );
+
+        $pusher->trigger('deploy-output', 'deploy-event', 'ds');
     }
 
     // Reboots hosting server
     public function reboot()
     {
         if (Hash::check(request('password'), env('SERVER_PASSWORD'))) {
-            // TODO: Return back with error
-            return redirect()->back();
+            exec('sudo -u root -S /sbin/reboot ' . request('password'));
         }
 
-        exec('sudo -u root -S /sbin/reboot ' . request('password'));
+        // TODO: Return back with error
+        return redirect()->back()->withErrors(['error', 'You have entered the wrong admin password.']);
     }
 
 }

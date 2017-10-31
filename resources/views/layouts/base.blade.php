@@ -53,6 +53,12 @@
                 </div>
                 <div class="col-md-10">
                     <div class="content">
+                        @if ($errors->any())
+                            @foreach ($errors as $error)
+                                <div class="error">{{ $error }}</div>
+                            @endforeach
+                        @endif
+
                         @yield('content')
                     </div>
                 </div>

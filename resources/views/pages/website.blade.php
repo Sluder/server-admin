@@ -31,9 +31,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="sub-header">Deployment</h4>
-                    <form method="POST">
-                        <input class="btn custom-btn update-btn" onclick="deploy()">Deploy</input>
-                    </form>
+                    <button class="btn custom-btn update-btn" onclick="deploy()">Deploy</button>
                 </div>
             </div>
         </div>
@@ -41,8 +39,30 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
+    <script type="text/javascript" src="https://js.pusher.com/3.1/pusher.min.js"></script>
 
+    <script type="text/javascript">
+        var pusher = new Pusher('4462fe93b06d03e412be', {
+            cluster: 'us2',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('deploy-output');
+        channel.bind('deploy-event', function(data) {
+            alert(data);
+            // append data to screen
+        });
+
+        function deploy()
+        {
+            $.ajax({
+                type: 'GET',
+                url: '/deploy',
+                success: function(data) {
+
+                }
+            });
+        }
     </script>
 @endsection
 

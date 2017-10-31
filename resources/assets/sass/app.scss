@@ -129,20 +129,18 @@ a {
   padding: 20px;
 }
 
-.info-table {
+.info {
   margin-top: -5px;
 
-  td {
+  p {
     padding: 3px;
     font-size: 12px;
-  }
-
-  .info {
     color: white;
-  }
+    margin-bottom: 0;
 
-  .info-data {
-    color: $lightest;
+    .grey {
+      color: $lightest;
+    }
   }
 
   .btn {

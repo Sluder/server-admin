@@ -3,6 +3,7 @@
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PageController@server')->name('home');
     Route::get('/website/{website}', 'PageController@website')->name('website');
+    Route::get('/deploy', 'ServerController@deploy');
 
     Route::get('/server', 'PageController@server')->name('server');
     Route::get('/server/usage', 'ServerController@getUsage');
